@@ -1,0 +1,681 @@
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: linear-gradient(to right, burlywood 10%, antiquewhite 90%);
+  margin: 0;
+  padding: 0;
+}
+
+.Home {
+  background-color: antiquewhite;
+  width: auto;
+  height: auto;
+}
+
+.Homepage {
+  background: linear-gradient(to right, burlywood 10%, antiquewhite 90%);
+  width: auto;
+  height: 37rem;
+}
+
+.home-h1 {
+  margin-bottom: 20px;
+  margin-top: 7rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.center-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+}
+
+.home-button {
+  margin-right: 1rem;
+}
+
+.button {
+  width: 10rem;
+  margin-left: 1rem;
+}
+
+.form-control {
+  text-align: "center";
+  background-color: antiquewhite;
+  border-color: burlywood;
+  font-size: 2rem;
+  text-align: center;
+  width: 20rem;
+  height: 50px;
+}
+
+.btp {
+  margin-top: 3%;
+}
+
+.calculator-buttons {
+  width: 4rem;
+  margin-bottom: 10%;
+  margin-left: 0.5vh;
+  border-radius: 20px;
+  background-color: antiquewhite;
+}
+
+.calculator-input {
+  text-align: right;
+  font-size: 30px;
+}
+
+.calculator-center-container {
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.calculator-center-container-json {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 10vh;
+}
+.hobbies-center-container {
+  display: flex;
+}
+
+input {
+  width: 100%;
+  height: 5rem;
+  margin: 10% 10% 10% 0;
+}
+
+.aboutTitle {
+  margin: 0, 20vh;
+  font-size: 10vh;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.title-JSON {
+  text-align: center;
+  font-size: 15px;
+}
+
+.desc-JSON {
+  font-size: 12px;
+}
+
+.description {
+  font-size: 15px;
+}
+/* colors and backgrounds*/
+.red {
+  color: rgb(220, 65, 65);
+}
+
+.white {
+  color: white;
+}
+.black {
+  color: black;
+}
+
+.antiquewhite-background {
+  background-color: antiquewhite;
+}
+
+.burlywood-background {
+  background-color: burlywood;
+}
+
+.burlywood-background :hover {
+  color: white;
+  transition: 0.5s ease-in-out;
+}
+
+.ImageBackground {
+  flex: 1;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 20px;
+  height: 20rem;
+}
+
+.ImageHome {
+  width: 15rem;
+  animation: bounceforHomePage 2s infinite;
+}
+
+.image-Right {
+  margin: 0;
+  width: 50%;
+  animation: bounceforHobbies 2s infinite;
+}
+
+.scrollable-row {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  background-color: bisque;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 5px solid white;
+  border-radius: 50px;
+}
+
+/* border-radius and margins*/
+.br-5 {
+  border-radius: 20px;
+  width: 95%;
+}
+
+.h-details {
+  margin-left: 10vh;
+}
+
+.mr-2 {
+  margin-left: 2vh;
+  margin-top: 2vh;
+}
+
+.mr-5 {
+  margin-left: 5vh;
+  margin-top: 5vh;
+}
+
+.br-5-hobbies {
+  width: 90%;
+  height: 25vh;
+  margin-top: 0;
+  border-radius: 20px;
+  border: 2px solid burlywood;
+  transform: translate(20vh, -20vh);
+}
+
+.br-burlywood {
+  border: 1px solid burlywood;
+}
+
+.column {
+  flex: 3;
+  border-radius: 10px;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+.CardContainer {
+  width: 80%;
+  border-radius: 50px;
+  background-color: burlywood;
+}
+
+.CardContainer-JSON {
+  margin-top: 10%;
+  width: 14rem;
+  height: 21rem;
+  border-radius: 50px;
+  background-color: burlywood;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.card-json {
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  font-size: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 22rem;
+}
+
+.slider-image {
+  padding: 0;
+  margin: 0;
+  opacity: 50%;
+  background-color: #000000;
+  width: 100%;
+  max-height: 86vh;
+  object-fit: cover;
+}
+
+.slider-item {
+  position: relative;
+}
+
+.slider-caption {
+  position: absolute;
+  top: 10rem;
+  left: 50px;
+  color: antiquewhite;
+  background-color: antiquewhite;
+  height: 10px;
+  width: 50rem;
+  padding: 5px 10px;
+  font-size: 100px;
+}
+
+.slick-next {
+  display: none !important;
+}
+
+.loader {
+  border: 8px solid burlywood;
+  border-top: 8px solid antiquewhite;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .cards-container {
+    justify-content: space-between;
+  }
+
+  .card {
+    width: 300px;
+    height: auto;
+  }
+
+  .card-json {
+    width: 200px;
+    height: 300px;
+  }
+
+  .scrollable-row {
+    max-height: 5rem;
+  }
+
+  .slider-caption {
+    top: 10rem;
+    left: 50px;
+  }
+}
+
+@media (min-width: 300px) {
+  .card {
+    width: 300px;
+  }
+
+  .scrollable-row {
+    max-height: 28rem;
+  }
+
+  .slider-caption {
+    top: 10rem;
+    left: 50px;
+  }
+}
+
+/* animation */
+@keyframes bounceforHomePage {
+  0%,
+  100% {
+    transform: translate(0vh, -20vh);
+  }
+  50% {
+    transform: translate(0vh, -30vh);
+  }
+}
+
+@keyframes bounceforHobbies {
+  0%,
+  100% {
+    transform: translate(30vh, 0);
+  }
+  50% {
+    transform: translate(29.5vh, -1vh);
+  }
+}
+
+.author-container {
+  width: 70%;
+  margin: 0;
+}
+
+.author-introduction {
+  width: 20%;
+  margin-left: 10%;
+  display: inline-block;
+}
+
+.author-name {
+  width: 50%;
+  display: inline-block;
+}
+
+.author-form {
+   overflow: hidden;
+   border-right: 0.15em solid antiquewhite;
+   background-color: transparent;
+   white-space: nowrap;
+   letter-spacing: 0.15em;
+   width: 100%;
+}
+
+.about-container {
+  width: 50%;
+  height: 25vh;
+  border-radius: 20px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid burlywood;
+}
+
+.hobby-intro-container {
+  height: 10vh;
+  margin: 0;
+  margin-top: 5%;
+  width: 100%;
+  padding: 0;
+  display: block;
+}
+
+.hobby-intro-image {
+  width: 50%;
+  height: 10vh;
+  display: inline-block;
+}
+
+.hobby-intro-text {
+  width: 30%;
+  height: 10vh;
+  display: inline-block;
+  text-align: justify;
+  font-size: 3vh;
+}
+
+.hobby-greet {
+  font-family: Georgia, Times New Roman, Times, serif;
+  font-size: 7vh;
+}
+
+.hobby-abme-translate,
+.hobby-translate {
+  font-size: 20px;
+}
+
+.hobby-abme {
+  margin-top: 2%;
+  font-family: Georgia, Times New Roman, Times, serif;
+  font-size: 6vh;
+  text-align: center;
+}
+
+.calculator-container {
+  height: 400px;
+  width: 300px;
+  border-radius: 15px;
+  background-color: burlywood;
+  padding: 10px;
+}
+
+.buttons-container {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  gap: 10px;
+}
+
+.button-row button {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  border: solid 1px #000000;
+  font-size: 24px;
+  transition: 0.1s ease-in;
+  background-color: antiquewhite;
+  color: #000000;
+}
+
+.button-row button:hover {
+  background-color: #cbcbcb;
+}
+
+.button-row .zero-btn {
+  flex-basis: 52%;
+  border-radius: 30px;
+  text-align: left;
+  padding: 15px;
+}
+
+.button-row .decimal-btn {
+  flex-basis: 25%;
+}
+
+.button-row .equal-sign-btn {
+  flex-basis: 25%;
+}
+
+.button-row .last-button {
+  background-color: #ff9900;
+  transition: 0.1s ease-in;
+}
+.button-row .last-button:hover {
+  background-color: #a26100;
+}
+
+.button-row .top {
+  background-color: #dddddd;
+  color: #000000;
+}
+.button-row .top:hover {
+  background-color: #949494;
+  color: #000000;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: burlywood;
+  padding: 0 2% 0 2%;
+  border-radius: 15px 15px 0px 0px;
+  height: 20%;
+  text-align: right;
+}
+
+.input-container h1 {
+  margin: 0;
+  color: #ffffff;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+/* responsiveness  */
+@media screen and (min-width: 414px) and (min-height: 896px) {
+  body {
+    height: auto;
+  }
+
+  /* homepage start */
+  .Homepage {
+    background: linear-gradient(to right, burlywood 10%, antiquewhite 90%);
+    width: auto;
+    height: 60rem;
+  }
+
+  .home-h1 {
+    font-size: 5vh;
+    text-align: center;
+    margin-right: 10%;
+    padding: 0;
+  }
+
+  .author-container {
+    width: 100%;
+  }
+
+  .author-introduction {
+    margin-left: 5%;
+  }
+
+  .author-introduction i {
+    font-size: 12px;
+  }
+
+  .author-form {
+    width: 15rem;
+    font-size: 12px;
+  }
+
+  .home-button {
+    margin: 0;
+  }
+
+  .button {
+    width: 10rem;
+    font-size: 12px;
+    margin-bottom: 3%;
+    transform: translate(-3vh, 1vh);
+  }
+
+  .about-container {
+    width: 70%;
+    height: 21vh;
+  }
+  /* homepage end */
+
+  /* calculator start */
+  .calculator-container {
+    width: 300px;
+  }
+
+  .calculator-buttons {
+    align-items: center;
+    margin-left: -10px;
+    margin-right: 10px;
+  }
+
+  .calculator-input {
+    font-size: 20px;
+  }
+  /* calculator end */
+
+  /* hobby start */
+  .hobby-intro-image {
+    margin: 0;
+    width: 100%;
+    transform: translate(-10rem, 6rem);
+  }
+
+  .hobby-intro-text {
+    transform: translate(3rem, 15rem);
+  }
+
+  .hobby-greet {
+    font-size: 60px;
+  }
+
+  .hobby-translate {
+    display: none;
+  }
+
+  .hobby-desc {
+    display: none;
+  }
+
+  .column {
+    margin-left: 18%;
+  }
+  /* hobby end */
+
+  .slider-caption {
+    top: 10rem;
+    left: 50px;
+  }
+}
+
+@media screen and (max-width: 746px) {
+  .CardContainer-JSON {
+    width: 14rem;
+    height: 21rem;
+  }
+  .card-img {
+    margin-top: 1.5rem; /* Adjust margin for smaller screens */
+  }
+
+  .slider-caption {
+    top: 10rem;
+    left: 50px;
+  }
+}
+
+@media screen and (width: 699) and (height: 1013) {
+  .Homepage {
+    height: 65rem;
+  }
+
+  .slider-caption {
+    top: 10rem;
+    left: 50px;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  .slider-caption {
+    width: 70%;
+    font-size: 60px;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: lightblue;
+  }
+}

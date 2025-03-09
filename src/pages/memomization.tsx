@@ -1,6 +1,5 @@
 import { useState, useMemo } from "react";
-import Navbar from "../components/navigation";
-function ExpensiveComponent({ data: any }) {
+function ExpensiveComponent( data : any ) {
   console.log("ExpensiveComponent rendered");
   return <p>Data: {data.value}</p>;
 }
@@ -14,7 +13,6 @@ export default function Memoization() {
 
   return (
     <div>
-      <Navbar />
       <h2>useMemo Example</h2>
       <button onClick={() => setCount(count + 1)}>
         Increment Count: {count}

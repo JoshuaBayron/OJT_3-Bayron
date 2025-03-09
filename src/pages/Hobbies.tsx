@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/layout.css";
 import Card from "../components/hobbiesCard";
-import Navbar from "../components/navigation";
 import MySlider from "../components/Slider";
 
 import animeGirl from "../images/animeGirl.jpg";
@@ -27,7 +26,6 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       {loading ? (
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <div className="loader"></div>

@@ -1,9 +1,8 @@
-import React, { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import Input from "../components/Input";
 import Buttons from "../components/Buttons";
 import { Operators } from "../types/operations";
-import Navbar from "../components/navigation";
 import BackButton from "../components/btp";
 
 export default function Calculator() {
@@ -175,7 +174,6 @@ export default function Calculator() {
 
   return (
     <div className="Home">
-      <Navbar />
       {loading ? (
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <div className="loader"></div>

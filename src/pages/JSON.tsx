@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import UserCard from "../components/UserList"; // Renamed component to UserCard
-import Navbar from "../components/navigation"; // Renamed component to Navbar
+// Renamed component to Navbar
 import { Row, Col } from "react-bootstrap";
 import BackButton from "../components/btp";
 import axios from "axios";
@@ -69,7 +69,6 @@ export default function JSON() {
 
   return (
     <>
-      <Navbar />
 
       {loading ? (
         <div style={{ textAlign: "center", marginTop: "20px" }}>

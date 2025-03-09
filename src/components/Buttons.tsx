@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 interface IProps {
   handleOnPress: (value: string) => void;
@@ -11,36 +12,28 @@ export default function Buttons({ handleOnPress }: IProps) {
   }
 
   return (
-    <div className="buttons-container">
-      <div className="button-row"> 
-        <button style={{backgroundColor:"red", color: "antiquewhite"}}className="top" onClick={onPress}>C</button>
-        <button className="top" onClick={onPress}>+/-</button>
-        <button className="top" onClick={onPress}>%</button>
-        <button className="last-button" onClick={onPress}>÷</button>
-      </div>
-      <div className="button-row">
-        <button onClick={onPress}>7</button>
-        <button onClick={onPress}>8</button>
-        <button onClick={onPress}>9</button>
-        <button className="last-button" onClick={onPress}>✕</button>
-      </div>
-      <div className="button-row">
-        <button onClick={onPress}>4</button>
-        <button onClick={onPress}>5</button>
-        <button onClick={onPress}>6</button>
-        <button className="last-button" onClick={onPress}>-</button>
-      </div>
-      <div className="button-row">
-        <button onClick={onPress}>1</button>
-        <button onClick={onPress}>2</button>
-        <button onClick={onPress}>3</button>
-        <button className="last-button" onClick={onPress}>+</button>
-      </div>
-      <div className="button-row">
-        <button className="zero-btn" onClick={onPress}>0</button>
-        <button className="decimal-btn" onClick={onPress}>.</button>
-        <button className="last-button equal-sign-btn" onClick={onPress}>=</button>
-      </div>
-    </div>
+    <Container className="buttons-container">
+      {[
+        ['C', '+/-', '%', '÷'],
+        ['7', '8', '9', '✕'],
+        ['4', '5', '6', '-'],
+        ['1', '2', '3', '+'],
+        ['0', '.', '=']
+      ].map((row, rowIndex) => (
+        <Row key={rowIndex} className="g-1">
+          {row.map((label, colIndex) => (
+            <Col key={colIndex} className={label === '0' ? 'col-6' : 'col-3'}>
+              <Button
+                variant={label === 'C' ? 'danger' : label === '=' ? 'primary' : 'secondary'}
+                className={`w-100 ${label === '0' ? 'zero-btn' : ''}`}
+                onClick={onPress}
+              >
+                {label}
+              </Button>
+            </Col>
+          ))}
+        </Row>
+      ))}
+    </Container>
   );
 }

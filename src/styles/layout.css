@@ -731,3 +731,26 @@ body.overlay-active {
     transform: scale(1);
   }
 }
+
+.input-container {
+  width: 100%;
+  min-height: 80px; /* Adjust height */
+  background-color: #616161;
+  display: flex;
+  align-items: right;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.input-text {
+  font-size: 3rem; /* Bigger text */
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  word-break: break-all;
+}
+
+.error {
+  color: red;
+}

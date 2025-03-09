@@ -1,9 +1,8 @@
-import { useState, useMemo, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { useState, useMemo } from "react";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import Input from "../components/Input";
 import Buttons from "../components/Buttons";
 import { Operators } from "../types/operations";
-import BackButton from "../components/btp";
 
 export default function Calculator() {
   const [input, setInput] = useState<string | null>(null);
@@ -13,7 +12,6 @@ export default function Calculator() {
   const [showOldInput, setShowOldInput] = useState<boolean>(false);
   const [prevSymbol, setPrevSymbol] = useState<string | null>(null);
   const [equalSignPressed, setEqualSignPressed] = useState<boolean>(false);
-  const [loading, setLoading] = useState(true);
   const [showHistory, setShowHistory] = useState(false);
   const [history, setHistory] = useState<
     { expression: string; result: number }[]
@@ -161,53 +159,45 @@ export default function Calculator() {
     }
   }
 
-  useEffect(() => {
-    // Simulate data fetching delay
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
-
   function toggleHistory() {
     setShowHistory(!showHistory);
   }
 
   return (
-    <div className="Home">
-      {loading ? (
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <div className="loader"></div>
-          <p>Loading...</p>
-        </div>
-      ) : (
-        <div className="calculator-center-container">
-          <div className="calculator-container">
+    <Container
+      fluid
+      className="d-flex justify-content-center align-items-center min-vh-100"
+    >
+      <Row className="w-100 justify-content-center align-items-center">
+        <Col xs={11} sm={10} md={7} lg={5} xl={4} className="d-flex justify-content-center">
+          <Card className="shadow-lg w-100">
             <Input error={hasError} input={currentInput ?? "0"} />
             <Buttons handleOnPress={handleButtonPress} />
-          </div>
-          <div className="home-button">
-            <Button
-              onClick={toggleHistory}
-              variant="warning"
-              className="button white burlywood-background br-burlywood antiquewhite-background btp"
-            >
-              {showHistory ? "Hide History" : "Show History"}
-            </Button>
-
-            <div style={{ display: showHistory ? "block" : "none" }}>
-              <p style={{fontSize:"16px"}}>Calculation History:</p>
-              <ul>
-                {history.map((item, index) => (
-                  <li key={index}>
-                    <strong>{item.expression}</strong> = {item.result}
-                  </li>
-                ))}
-              </ul>
+            <div className="d-flex justify-content-between mt-3">
+              <Button
+                onClick={toggleHistory}
+                variant="warning"
+                className="button white burlywood-background br-burlywood antiquewhite-background btp"
+              >
+                {showHistory ? "Hide History" : "Show History"}
+              </Button>
             </div>
-            <BackButton />
-          </div>
-        </div>
-      )}
-    </div>
+            {showHistory && (
+              <div className="mt-3">
+                <h5>Calculation History:</h5>
+                <ul>
+                  {history.map((item, index) => (
+                    <li key={index}>
+                      <strong>{item.expression}</strong> = {item.result}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+
   );
 }

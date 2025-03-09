@@ -1,68 +1,90 @@
 import React, { useEffect, useState } from "react";
 import "../styles/layout.css";
 import Card from "../components/hobbiesCard";
-import MySlider from "../components/Slider";
 
 import animeGirl from "../images/animeGirl.jpg";
 import Music from "../images/Headphone.jpg";
 import Games from "../images/games.jpg";
 import Foods from "../images/foods.jpg";
 
-const App: React.FC = () => {
+const cardsData = [
+  { id: 1, image: animeGirl, title: "Watching Anime", description: "I love watching anime, especially Isekai." },
+  { id: 2, image: Music, title: "Listening to Music", description: "My favorite music is mostly JPop, like Karano Kokoro." },
+  { id: 3, image: Games, title: "Playing Games", description: "I enjoy playing mobile games like Mobile Legends and CODM." },
+  { id: 4, image: Foods, title: "Eating", description: "I love eating, especially when it's free." },
+];
+
+const Hobbies: React.FC = () => {
   const [loading, setLoading] = useState(true);
-  const slides = [
-    { image: animeGirl, caption: "Watching Anime" },
-    { image: Music, caption: "Vibing to Music" },
-    { image: Games, caption: "Playing Games" },
-    { image: Foods, caption: "Eating Syempre" },
-  ];
+  const [expandedCardId, setExpandedCardId] = useState<number | null>(null);
+  const [fetchedDescriptions, setFetchedDescriptions] = useState<{ [key: number]: string }>({});
 
   useEffect(() => {
-    // Simulate data fetching delay
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
 
+  const toggleDescription = (id: number) => {
+    if (expandedCardId === id) {
+      setExpandedCardId(null);
+    } else {
+      setExpandedCardId(id);
+
+      if (!fetchedDescriptions[id]) {
+        setFetchedDescriptions((prev) => ({
+          ...prev,
+          [id]: "Fetching description...",
+        }));
+
+        setTimeout(() => {
+          const card = cardsData.find((c) => c.id === id);
+          if (card) {
+            setFetchedDescriptions((prev) => ({ ...prev, [id]: card.description }));
+          }
+        }, 500);
+      }
+    }
+  };
+
   return (
-    <>
-      {loading ? (
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <div className="loader"></div>
-          <p>Loading...</p>
+    <div className={`app-container ${expandedCardId !== null ? "overlay-active" : ""}`}>
+      {/* Show overlay and ONLY the expanded card */}
+      {expandedCardId !== null ? (
+        <div className="overlay" onClick={() => setExpandedCardId(null)}>
+          <div className="expanded-card-container" onClick={(e) => e.stopPropagation()}>
+            <Card
+              {...cardsData.find((card) => card.id === expandedCardId)!}
+              expandedCardId={expandedCardId}
+              onToggle={toggleDescription}
+            />
+          </div>
         </div>
       ) : (
-        <>
-          <div style={{ backgroundColor: "black" }}>
-            <MySlider slides={slides} />
-          </div>
-
-          <div className="cards-container">
-            <Card
-              image={animeGirl}
-              title="Watching Anime"
-              description="I love watching anime especially Isekai."
-            />
-            <Card
-              image={Music}
-              title="Listening to Music"
-              description="My favorite music mostly is JPop music, like Karano Kokoro"
-            />
-            <Card
-              image={Games}
-              title="Playing Games"
-              description="Playing mobile app games like mobile legends and CODM is what I played mostly."
-            />
-            <Card
-              image={Foods}
-              title="Eating"
-              description="I love to eat, especially when it is free."
-            />
-          </div>
-        </>
+        // Show all cards only when no card is expanded
+        <div className="cards-container">
+          {loading ? (
+            <div style={{ textAlign: "center", marginTop: "20px" }}>
+              <div className="loader"></div>
+              <p>Loading...</p>
+            </div>
+          ) : (
+            cardsData.map((card) => (
+              <Card
+                key={card.id}
+                id={card.id}
+                image={card.image}
+                title={card.title}
+                description={expandedCardId === card.id ? fetchedDescriptions[card.id] || "Fetching description..." : ""}
+                expandedCardId={expandedCardId}
+                onToggle={toggleDescription}
+              />
+            ))
+          )}
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
-export default App;
+export default Hobbies;

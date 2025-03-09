@@ -679,3 +679,55 @@ input {
     border-color: lightblue;
   }
 }
+
+/* When a card is expanded, background turns gray */
+.overlay-active {
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Overlay effect */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Prevent scrolling when overlay is active */
+body.overlay-active {
+  overflow: hidden;
+}
+
+/* Centered card container */
+.expanded-card-container {
+  max-width: 600px;
+  width: 90%;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in animation for the expanded card */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

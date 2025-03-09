@@ -9,7 +9,7 @@ import JSON from "./pages/JSON";
 import Calculator from "./pages/Calculator";
 import Not_Found from "./pages/Not_Found";
 import Hobbies from "./pages/Hobbies";
-
+import Memoization from "./pages/memomization";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/Calculator" element={<Calculator/>}></Route>
         <Route path="/Hobbies" element={<Hobbies/>}></Route>
         <Route path="/JSON" element={<JSON/>}></Route>
+        <Route path="/Memoization" element={<Memoization/>}></Route>
         <Route path="/*" element={<Not_Found/>}></Route>
       </Routes>
     </BrowserRouter>

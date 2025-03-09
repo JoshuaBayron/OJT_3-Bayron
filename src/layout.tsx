@@ -1,110 +1,56 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { useState } from "react";
-import {
-  Navbar,
-  Nav,
-  Container,
-  Row,
-  Col,
-  Offcanvas,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, Row, Col, Offcanvas, Button } from "react-bootstrap";
 
-function Layout() {
+const navLinks = ["Hobbies", "Calculator", "JSON", "Memoization"];
+
+const Sidebar = ({ className }) => (
+  <Col lg={2} className={className}>
+    <Nav className="flex-column">
+      <Navbar.Brand as={NavLink} to="/" className="text-decoration-none">
+        <span className="text-danger fw-bold fs-3">JOSHUA</span>
+        <span className="text-dark fs-3">BAYRON</span>
+      </Navbar.Brand>
+      {navLinks.map((link) => (
+        <NavLink
+          key={link}
+          to={`/${link}`}
+          className={({ isActive }) => `nav-link text-dark text-decoration-none ${isActive ? "fw-bold text-primary" : ""}`}
+        >
+          {link}
+        </NavLink>
+      ))}
+    </Nav>
+  </Col>
+);
+
+const Layout = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <Container fluid className="p-0">
+    <Container fluid className="p-0 m-0 overflow-hidden">
       <Row className="vh-100">
-        {/* Sidebar for large screens & Offcanvas for small screens */}
-        <Col lg={2} className="d-none d-lg-block bg-light border-end p-3">
-          <Nav defaultActiveKey="/home" className="flex-column">
-            <Navbar.Brand href="home">JoshuaBayron</Navbar.Brand>
-            <Nav.Link
-              className="text-dark text-decoration-none"
-              href="/Calculator"
-            >
-              Calculator
-            </Nav.Link>
-            <Nav.Link
-              className="text-dark text-decoration-none"
-              href="/Hobbies"
-            >
-              Hobbies
-            </Nav.Link>
-            <Nav.Link className="text-dark text-decoration-none" href="/JSON">
-              JSON
-            </Nav.Link>
-            <Nav.Link
-              className="text-dark text-decoration-none"
-              href="/Memoization"
-            >
-              Memoization
-            </Nav.Link>
-          </Nav>
-        </Col>
-
-        {/* Offcanvas for small screens */}
-        <Navbar
-          expand="lg"
-          className="d-lg-none p-3 position-fixed start-0 top-0"
-          style={{ zIndex: "1" }}
-        >
-          <Button
-            variant="light"
-            onClick={() => setShowSidebar(true)}
-            style={{ opacity: 0.7, transition: "opacity 0.3s" }}
-            onMouseEnter={(e) => (e.target.style.opacity = 1)}
-            onMouseLeave={(e) => (e.target.style.opacity = 0.7)}
-          >
-            ☰
-          </Button>
+        <Sidebar className="d-none d-lg-block bg-light border-end p-3" />
+        
+        {/* Offcanvas Navbar for small screens */}
+        <Navbar expand="lg" className="d-lg-none p-3 position-fixed start-0 top-0" style={{ zIndex: 1 }}>
+          <Button variant="light" onClick={() => setShowSidebar(true)}>☰</Button>
         </Navbar>
 
-        <Offcanvas
-          show={showSidebar}
-          onHide={() => setShowSidebar(false)}
-          placement="start"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>
-              <a href="/Home" className="text-decoration-none text-dark">JoshuaBayron</a>
-            </Offcanvas.Title>
-          </Offcanvas.Header>
+        <Offcanvas show={showSidebar} onHide={() => setShowSidebar(false)} placement="start">
+          <Offcanvas.Header closeButton className="justify-content-end w-100"/>
           <Offcanvas.Body>
-            <Nav defaultActiveKey="/home" className="flex-column">
-              <Nav.Link
-                className="text-dark text-decoration-none"
-                href="/Calculator"
-              >
-                Calculator
-              </Nav.Link>
-              <Nav.Link
-                className="text-dark text-decoration-none"
-                href="/Hobbies"
-              >
-                Hobbies
-              </Nav.Link>
-              <Nav.Link className="text-dark text-decoration-none" href="/JSON">
-                JSON
-              </Nav.Link>
-              <Nav.Link
-                className="text-dark text-decoration-none"
-                href="/Memoization"
-              >
-                Memoization
-              </Nav.Link>
-            </Nav>
+            <Sidebar />
           </Offcanvas.Body>
         </Offcanvas>
 
         {/* Main Content */}
-        <Col lg={10} className="p-4">
+        <Col lg={10} className="p-0">
           <Outlet />
         </Col>
       </Row>
     </Container>
   );
-}
+};
 
 export default Layout;
